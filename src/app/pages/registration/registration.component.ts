@@ -15,7 +15,7 @@ import { Step1Component } from '../../components/registration-steps/step1/step1.
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent {
-  currentPage:number = 4
+  currentPage:number = 1
   constructor(){
 
   }
