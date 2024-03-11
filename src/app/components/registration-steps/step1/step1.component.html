@@ -1,0 +1,195 @@
+<app-step-header title="Choose Your Subscription Plan" />
+<app-step-body>
+  <div class="flex justify-center">
+    <table class="w-[80%]">
+      <thead>
+        <tr>
+          <th
+            class="w-[34%] rounded-tl-xl border-0 bg-[#2B2A6C] p-3 py-5 text-4xl font-bold uppercase text-white"
+          >
+            Services
+          </th>
+          <th
+            class="w-[22%] border-0 bg-[#02CCA6] p-3 py-5 font-bold text-white"
+          >
+            <div class="flex flex-col items-center justify-center gap-2">
+              <p class="text-2xl uppercase">Basic plan</p>
+              <p
+                class="max-w-[150px] rounded-full bg-white px-4 py-0.5 text-sm font-semibold text-[#373737]"
+              >
+                Up to 25 users
+              </p>
+            </div>
+          </th>
+          <th
+            class="w-[22%] border-0 bg-[#F5B619] p-3 py-5 font-bold text-white"
+          >
+            <div class="flex flex-col items-center justify-center gap-2">
+              <p class="text-2xl uppercase">Team plan</p>
+              <p
+                class="max-w-[150px] rounded-full bg-white px-4 py-0.5 text-sm font-semibold text-[#373737]"
+              >
+                Up to 50 users
+              </p>
+            </div>
+          </th>
+          <th
+            class="w-[22%] rounded-tr-xl border-0 bg-[#00538F] p-3 py-5 font-bold text-white"
+          >
+            <div class="flex flex-col items-center justify-center gap-2">
+              <p class="text-2xl uppercase">Corporate Plan</p>
+              <p
+                class="max-w-[150px] rounded-full bg-white px-4 py-0.5 text-sm font-semibold text-[#373737]"
+              >
+                Up to 100 users
+              </p>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="border">
+        @for (item of priceTable; track $index) {
+          <tr>
+            <td class="w-[34%] border px-5 py-5 font-bold text-black">
+              <div class="flex flex-col">
+                <p class="text-xl uppercase">{{ item.service.title }}</p>
+                <p class="py-2 text-sm font-semibold text-[#373737]">
+                  {{ item.service.desc }}
+                </p>
+              </div>
+            </td>
+            <td class="w-[22%] border p-3 py-5 font-bold text-black">
+              <div class="flex items-center justify-center">
+                <p
+                  class="max-w-[150px] rounded-full px-10 py-[10px] text-[24px] font-bold "
+                [ngClass]="$index==0?'bg-[#02CCA6] text-white':'bg-white border text-[#373737]'"
+
+                >
+                  {{ item.basic }}
+                </p>
+              </div>
+            </td>
+            <td class="w-[22%] border p-3 py-5 font-bold text-black">
+              <div class="flex items-center justify-center">
+                <p
+                  class="max-w-[150px] rounded-full border bg-white px-10 py-[10px] text-[24px] font-bold text-[#373737]"
+                >
+                  {{ item.team }}
+                </p>
+              </div>
+            </td>
+            <td class="w-[22%] border p-3 py-5 font-bold text-black">
+              <div class="flex items-center justify-center">
+                <p
+                  class="max-w-[150px] rounded-full border bg-white px-10 py-[10px] text-[24px] font-bold text-[#373737]"
+                >
+                  {{ item.corporate }}
+                </p>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="py-6 flex mx-[10%]">
+    <p class="text-3xl font-semibold">Payment Detail</p>
+  </div>
+  <div class="flex flex-col justify-center mx-auto  px-4 border max-w-[95rem] border-b-0 rounded-tl-xl rounded-tr-xl">
+    <table class="w-full ">
+      <thead>
+        <tr>
+          <th
+            class="w-[50%] text-left rounded-tl-xl p-3 py-5 text-2xl font-semibold"
+          >
+          Service name
+          </th>
+          <th
+          class="w-[25%] p-3 py-5 text-2xl font-semibold"
+          >
+          Plan name
+          </th>
+          <th
+          class="w-[25%] p-3 py-5 text-2xl font-semibold"
+          >
+          Price
+          </th>
+        </tr>
+      </thead>
+      <tbody >
+          <tr class="border-t">
+            <td class="w-[50%] px-5 py-5 font-bold text-black text-left">
+              <div class="flex flex-col items-start justify-left gap-2">
+                <p class="text-2xl font-normal">Document Housing</p>
+
+              </div>
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <p class="text-2xl font-normal">Corporate Plan</p>
+                <p
+                  class="text-xs text-[#9C9C9C]"
+                >
+                  Up to 100 users
+                </p>
+              </div>
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+                <div class="flex flex-col items-center justify-center gap-2">
+                  <p class="text-2xl font-normal">$99.99</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="border-t">
+            <td class="w-[50%] px-5 py-5 font-bold text-black text-left">
+              <div class="flex flex-col items-start justify-left gap-2">
+                <p class="text-2xl font-normal">Document Housing</p>
+
+              </div>
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <p class="text-2xl font-normal">Corporate Plan</p>
+                <p
+                  class="text-xs text-[#9C9C9C]"
+                >
+                  Up to 25 users
+                </p>
+              </div>
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+                <div class="flex flex-col items-center justify-left gap-2">
+                  <p class="text-2xl font-normal">$39.99</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    </div>
+  <div class="flex flex-col justify-center mx-auto mb-10 border max-w-[95rem] rounded-bl-xl rounded-br-xl">
+    <table class="w-full ">
+      <tbody >
+          <tr class="rounded-b  bg-[#F5F5F5]">
+            <td class=" rounded-bl-xl  w-[50%] px-5 py-5 font-bold text-black text-left">
+
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <p class="text-2xl font-bold">Total Amount</p>
+              </div>
+            </td>
+            <td class="w-[25%] rounded-br-xl p-3 py-5 font-bold text-black">
+                <div class="flex flex-col items-center justify-center gap-2">
+                  <p class="text-2xl font-bold">$89.98</p>
+              </div>
+            </td>
+
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="py-6 mb-20 flex justify-end mx-[10%]">
+    <p class="text-xl font-medium bg-[#3B17BC] py-2 px-6 rounded-full text-white" (click)="nextPage.emit(2)">Pay Now</p>
+  </div>
+
+</app-step-body>

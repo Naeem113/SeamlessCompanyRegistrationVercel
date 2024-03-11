@@ -1,0 +1,21 @@
+<app-step-header title="Final Step" />
+<div class="mx-auto max-w-[75rem] mb-10">
+  <app-step-body>
+    <app-card >
+      <form class="flex flex-col gap-6">
+      <div class="mt-4 flex items-end justify-between">
+        <a href="javascript:;" class="text-xl font-medium text-[#8F8F8F] underline"
+        (click)="nextPage.emit(4)"
+          >Back</a
+        >
+        <button
+          class="rounded-full bg-[#3B17BC] px-10 py-2.5 text-xl font-medium text-white"
+          (click)="submitForm()"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+    </app-card>
+  </app-step-body>
+</div>

@@ -1,0 +1,19 @@
+<app-stepper (selectPage)="selectedPage($event)" [currentPage]="currentPage" />
+
+@switch (currentPage) {
+  @case (1) {
+    <app-step1 (nextPage)="currentPage=$event" />
+  }
+  @case (2) {
+    <app-step2 (nextPage)="currentPage=$event"/>
+  }
+  @case (3) {
+    <app-step3 (nextPage)="currentPage=$event"/>
+  }
+  @case (4) {
+    <app-step4 (nextPage)="currentPage=$event"/>
+  }
+  @case (5) {
+    <app-step5 (nextPage)="currentPage=$event"/>
+  }
+}

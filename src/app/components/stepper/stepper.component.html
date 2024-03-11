@@ -1,0 +1,14 @@
+<div class="flex mx-auto items-center justify-center py-14 ">
+<div class="container mx-auto">
+  <ul class="flex mx-auto items-center justify-center ">
+    @for (page of [1,2,3,4,5]; track $index) {
+   <li (click)="selectPage.emit(page)" [ngClass]="{'current':currentPage==page,'complete':currentPage>page}">
+    <div class="content font-semibold">Step {{page}}</div>
+  </li>
+}
+
+  </ul>
+</div>
+</div>
+
+
