@@ -1,21 +1,182 @@
-<app-step-header title="Final Step" />
-<div class="mx-auto max-w-[75rem] mb-10">
-  <app-step-body>
-    <app-card >
-      <form class="flex flex-col gap-6">
-      <div class="mt-4 flex items-end justify-between">
-        <a href="javascript:;" class="text-xl font-medium text-[#8F8F8F] underline"
-        (click)="nextPage.emit(4)"
-          >Back</a
-        >
-        <button
+<app-step-header title="Checkout" />
+<div class="mx-[10%] mb-10">
+  <div class="flex gap-3">
+    <div class="border rounded-xl py-4 px-6 w-[60%]">
+        <form class="flex flex-col gap-6 px-6">
+          <div class="py-6 flex ">
+            <p class="text-3xl font-semibold">Choose payment Method</p>
+          </div>
+          <div class="flex items-center justify-between mr-10">
+            <img src="/assets/master.png" alt="" >
+            <img src="/assets/googlePay.png" alt="" >
+            <img src="/assets/visa.png" alt="" >
+            <img src="/assets/paypal.png" alt="" >
+
+          </div>
+          <div class="flex gap-3">
+            <div class="flex w-full flex-col gap-3">
+              <label for="email" class="text-xl text-gray-600 font-medium">Name on Card</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="rounded-md border border-[#E5E7EB] px-6 py-3 text-[18px] font-normal placeholder:text-[#BEBEBE] focus:outline-none"
+                placeholder="Write card name here"
+              />
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex w-full flex-col gap-3">
+              <label for="email" class="text-xl text-gray-600 font-medium">Card Number</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="rounded-md border border-[#E5E7EB] px-6 py-3 text-[18px] font-normal placeholder:text-[#BEBEBE] focus:outline-none"
+                placeholder="00000000000    10 digits"
+              />
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex w-1/2 flex-col gap-3">
+              <label for="fname" class="text-xl text-gray-600 font-medium">CVC</label>
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                class="rounded-md border border-[#E5E7EB] px-6 py-3 text-[18px] font-normal placeholder:text-[#BEBEBE] focus:outline-none"
+                placeholder="CVC"
+              />
+            </div>
+            <div class="flex w-1/2 flex-col gap-3">
+              <label for="lname"  class="text-xl text-gray-600 font-medium">Expiry Date</label>
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                class="rounded-md border border-[#E5E7EB] px-6 py-3 text-[18px] font-normal placeholder:text-[#BEBEBE] focus:outline-none"
+                placeholder="MM/YY"
+              />
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex w-full flex-col gap-3">
+              <label for="email" class="text-xl text-gray-600 font-medium">E-mail Address</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="rounded-md border border-[#E5E7EB] px-6 py-3 text-[18px] font-normal placeholder:text-[#BEBEBE] focus:outline-none"
+                placeholder="Write e-mail here"
+              />
+            </div>
+          </div>
+        <div class="mt-4 flex items-end justify-start gap-2">
+          <button
           class="rounded-full bg-[#3B17BC] px-10 py-2.5 text-xl font-medium text-white"
           (click)="submitForm()"
         >
-          Submit
+        Checkout
         </button>
+        <button
+          class="rounded-full bg-[#F5F5F5] px-10 py-2.5 text-xl font-medium text-[#878787]"
+          (click)="nextPage.emit(1)"
+        >
+          Cancel
+        </button>
+        </div>
+      </form>
+    </div>
+    <div class="border rounded-xl py-4 px-6 w-[40%]">
+
+      <div class="py-6 flex mx-[4%]">
+        <p class="text-3xl font-semibold">Payment Detail</p>
       </div>
-    </form>
-    </app-card>
-  </app-step-body>
+      <div class="flex flex-col justify-center mx-auto  px-4  max-w-[95rem] border-b-0 rounded-tl-xl rounded-tr-xl">
+        <table class="w-full ">
+          <thead>
+            <tr>
+              <th
+                class="w-[50%] text-left rounded-tl-xl p-3 py-5 text-2xl font-semibold"
+              >
+              Service name
+              </th>
+              <th
+              class="w-[25%] p-3 py-5 text-2xl font-semibold"
+              >
+              Price
+              </th>
+            </tr>
+          </thead>
+          <tbody >
+            @for (item of priceTable; track $index) {
+              @if(item.basic.isSelected){
+              <tr class="border-t border-b">
+                <td class="w-[50%] px-5 py-3 font-bold text-black text-left">
+                  <div class="flex flex-col items-start justify-left gap-2">
+                    <p class="text-xl text-[#DADADA] font-normal">{{item.service.title}}</p>
+
+                  </div>
+                </td>
+                <td class="w-[25%] p-3 py-3 font-bold text-black">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                      <p class="text-xl text-[#DADADA] font-normal">{{item.basic.price}}</p>
+                  </div>
+                </td>
+              </tr>
+            }
+            @if(item.corporate.isSelected){
+              <tr class="border-t border-b">
+                <td class="w-[50%] px-5 py-3 font-bold text-black text-left">
+                  <div class="flex flex-col items-start justify-left gap-2">
+                    <p class="text-xl text-[#DADADA] font-normal">{{item.service.title}}</p>
+
+                  </div>
+                </td>
+
+                <td class="w-[25%] p-3 py-3 font-bold text-black">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                      <p class="text-xl text-[#DADADA] font-normal">{{item.corporate.price}}</p>
+                  </div>
+                </td>
+              </tr>
+            }
+            @if(item.team.isSelected){
+              <tr class="border-t border-b">
+                <td class="w-[50%] px-5 py-3 font-bold text-black text-left">
+                  <div class="flex flex-col items-start justify-left gap-2">
+                    <p class="text-xl text-[#DADADA] font-normal">{{item.service.title}}</p>
+
+                  </div>
+                </td>
+
+                <td class="w-[25%] p-3 py-3 font-bold text-black">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                      <p class="text-xl text-[#DADADA] font-normal">{{item.team.price}}</p>
+                  </div>
+                </td>
+              </tr>
+            }
+          }
+
+          </tbody>
+        </table>
+        </div>
+      <div class="flex flex-col justify-start mx-auto mt-10 min-h-[500px]  max-w-[95rem] rounded-bl-xl rounded-br-xl">
+        <table class="w-full ">
+          <tbody >
+              <tr class="rounded-b">
+                <td class="w-[25%] p-3 py-5 font-bold text-black">
+                  <div class="flex flex-col items-center justify-start gap-2">
+                    <p class="text-2xl font-semibold">Total Amount</p>
+                    <p class="text-2xl font-bold text-[#2B2A6C]">${{totalPrice}}</p>
+                  </div>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>

@@ -58,32 +58,34 @@
                 </p>
               </div>
             </td>
-            <td class="w-[22%] border p-3 py-5 font-bold text-black">
+            <td class="w-[22%] border p-3 py-5 font-bold text-black cursor-pointer" (click)="addPackage(item.basic)">
               <div class="flex items-center justify-center">
                 <p
                   class="max-w-[150px] rounded-full px-10 py-[10px] text-[24px] font-bold "
-                [ngClass]="$index==0?'bg-[#02CCA6] text-white':'bg-white border text-[#373737]'"
+                [ngClass]="item.basic.isSelected ?'bg-[#02CCA6] text-white':'bg-white border text-[#373737]'"
 
                 >
-                  {{ item.basic }}
+                  {{ item.basic.price }}
                 </p>
               </div>
             </td>
-            <td class="w-[22%] border p-3 py-5 font-bold text-black">
+            <td class="w-[22%] border p-3 py-5 font-bold text-black cursor-pointer" (click)="addPackage(item.team)" >
               <div class="flex items-center justify-center">
                 <p
-                  class="max-w-[150px] rounded-full border bg-white px-10 py-[10px] text-[24px] font-bold text-[#373737]"
+                [ngClass]="item.team.isSelected ?'bg-[#02CCA6] text-white':'bg-white border text-[#373737]'"
+                  class="max-w-[150px] rounded-full border  px-10 py-[10px] text-[24px] font-bold text-[#373737]"
                 >
-                  {{ item.team }}
+                  {{ item.team.price }}
                 </p>
               </div>
             </td>
-            <td class="w-[22%] border p-3 py-5 font-bold text-black">
+            <td class="w-[22%] border p-3 py-5 font-bold text-black cursor-pointer" (click)="addPackage(item.corporate)">
               <div class="flex items-center justify-center">
                 <p
-                  class="max-w-[150px] rounded-full border bg-white px-10 py-[10px] text-[24px] font-bold text-[#373737]"
+                [ngClass]="item.corporate.isSelected ?'bg-[#02CCA6] text-white':'bg-white border text-[#373737]'"
+                  class="max-w-[150px] rounded-full border px-10 py-[10px] text-[24px] font-bold text-[#373737]"
                 >
-                  {{ item.corporate }}
+                  {{ item.corporate.price }}
                 </p>
               </div>
             </td>
@@ -117,16 +119,43 @@
         </tr>
       </thead>
       <tbody >
+        @for (item of priceTable; track $index) {
+          @if(item.basic.isSelected){
           <tr class="border-t">
             <td class="w-[50%] px-5 py-5 font-bold text-black text-left">
               <div class="flex flex-col items-start justify-left gap-2">
-                <p class="text-2xl font-normal">Document Housing</p>
+                <p class="text-2xl font-normal">{{item.service.title}}</p>
 
               </div>
             </td>
             <td class="w-[25%] p-3 py-5 font-bold text-black">
               <div class="flex flex-col items-center justify-center gap-2">
-                <p class="text-2xl font-normal">Corporate Plan</p>
+                <p class="text-2xl font-normal">{{item.basic.packageName}}</p>
+                <p
+                  class="text-xs text-[#9C9C9C]"
+                >
+                  Up to 25 users
+                </p>
+              </div>
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+                <div class="flex flex-col items-center justify-center gap-2">
+                  <p class="text-2xl font-normal">{{item.basic.price}}</p>
+              </div>
+            </td>
+          </tr>
+        }
+        @if(item.corporate.isSelected){
+          <tr class="border-t">
+            <td class="w-[50%] px-5 py-5 font-bold text-black text-left">
+              <div class="flex flex-col items-start justify-left gap-2">
+                <p class="text-2xl font-normal">{{item.service.title}}</p>
+
+              </div>
+            </td>
+            <td class="w-[25%] p-3 py-5 font-bold text-black">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <p class="text-2xl font-normal">{{item.corporate.packageName}}</p>
                 <p
                   class="text-xs text-[#9C9C9C]"
                 >
@@ -136,33 +165,38 @@
             </td>
             <td class="w-[25%] p-3 py-5 font-bold text-black">
                 <div class="flex flex-col items-center justify-center gap-2">
-                  <p class="text-2xl font-normal">$99.99</p>
+                  <p class="text-2xl font-normal">{{item.corporate.price}}</p>
               </div>
             </td>
           </tr>
+        }
+        @if(item.team.isSelected){
           <tr class="border-t">
             <td class="w-[50%] px-5 py-5 font-bold text-black text-left">
               <div class="flex flex-col items-start justify-left gap-2">
-                <p class="text-2xl font-normal">Document Housing</p>
+                <p class="text-2xl font-normal">{{item.service.title}}</p>
 
               </div>
             </td>
             <td class="w-[25%] p-3 py-5 font-bold text-black">
               <div class="flex flex-col items-center justify-center gap-2">
-                <p class="text-2xl font-normal">Corporate Plan</p>
+                <p class="text-2xl font-normal">{{item.team.packageName}}</p>
                 <p
                   class="text-xs text-[#9C9C9C]"
                 >
-                  Up to 25 users
+                  Up to 50 users
                 </p>
               </div>
             </td>
             <td class="w-[25%] p-3 py-5 font-bold text-black">
-                <div class="flex flex-col items-center justify-left gap-2">
-                  <p class="text-2xl font-normal">$39.99</p>
+                <div class="flex flex-col items-center justify-center gap-2">
+                  <p class="text-2xl font-normal">{{item.team.price}}</p>
               </div>
             </td>
           </tr>
+        }
+      }
+
       </tbody>
     </table>
     </div>
@@ -180,7 +214,7 @@
             </td>
             <td class="w-[25%] rounded-br-xl p-3 py-5 font-bold text-black">
                 <div class="flex flex-col items-center justify-center gap-2">
-                  <p class="text-2xl font-bold">$89.98</p>
+                  <p class="text-2xl font-bold">${{totalPrice}}</p>
               </div>
             </td>
 
@@ -189,7 +223,7 @@
     </table>
   </div>
   <div class="py-6 mb-20 flex justify-end mx-[10%]">
-    <p class="text-xl font-medium bg-[#3B17BC] py-2 px-6 rounded-full text-white" (click)="nextPage.emit(2)">Pay Now</p>
+    <p class="text-xl font-medium bg-[#3B17BC] py-2 px-6 rounded-full text-white" (click)="nextPage.emit(2)">Next</p>
   </div>
 
 </app-step-body>
